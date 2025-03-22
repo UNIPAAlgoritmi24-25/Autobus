@@ -1,5 +1,3 @@
-from contextlib import nullcontext
-
 
 class Nodo:
     def __init__(self, valore, successore = None):
