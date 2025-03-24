@@ -1,6 +1,6 @@
 import Liste
 
-class Lista:
+class Coda:
     def __init__(self):
         self.inizio = None
         self.fine = None
@@ -28,12 +28,3 @@ class Lista:
         else:
             self.inizio = self.fine = None
         return x.valore
-
-l = Lista()
-
-print(l.coda_vuota())
-l.aggiungi("x")
-l.aggiungi("y")
-print(l.coda_vuota())
-print(l.rimuovi())
-print(l.rimuovi())

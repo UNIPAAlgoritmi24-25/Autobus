@@ -8,6 +8,7 @@ class Pila:
         return self.indice is None
 
     def aggiungi(self, valore):
+        print(f"Aggiungo {valore}")
         x = Liste.Nodo(valore)
         if self.pila_vuota():
             self.indice = x
@@ -22,13 +23,3 @@ class Pila:
         out = self.indice
         self.indice = self.indice.successore
         return out.valore
-
-
-p = Pila()
-print(p.pila_vuota())
-p.aggiungi("x")
-p.aggiungi("y")
-print(p.pila_vuota())
-print(p.rimuovi())
-print(p.rimuovi())
-print(p.pila_vuota())
