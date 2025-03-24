@@ -10,5 +10,4 @@ def counting_sort(arr):
         while count[i] > 0:
             arr.append(i)
             count[i] -= 1
-
     return arr
