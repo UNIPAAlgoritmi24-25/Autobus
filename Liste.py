@@ -1,4 +1,5 @@
 class Nodo:
+
     def __init__(self, valore, successore=None):
         self.valore = valore
         self.successore = successore
