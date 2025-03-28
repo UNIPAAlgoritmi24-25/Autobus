@@ -40,6 +40,7 @@ accorgiamo che i nostri dati sono doppioni in oltre è preferibile che il numero
 ### 2.3 Code  
 
 ### 2.4 Funzionalità
+
 - Massimo e minimo  
 - Ricerca  
 - Predecessore e successore  
