@@ -1,5 +1,7 @@
 # Uso ed esempi
+
 # Dependency
+
 ## Matplotlib Plotting
 
 ## 1. Algoritmi di Ordinamento 
