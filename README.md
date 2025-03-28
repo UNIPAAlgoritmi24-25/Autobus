@@ -11,7 +11,7 @@ Per far in modo che il software funzioni correttamente anche nel ordinamento di 
 `__lt__` e `__gt__` per poter usare gli operatori di confronto anche su istanze di classi
 ### 1.1 Counting Sort
 - L'algoritmo in oggetto partendo dall'array che deve ordinare crea un nuovo array con l'obbiettivo di contare i valori presenti più volte.
-Quindi se questo è l' array di partenza `[2, 3, 0, 2, 3, 2]` verrà creato l'array `[0, 0, 0, 0]` con 4 posizioni perché il valore più alto è 3 
+Quindi se questo è l' array di partenza `[2, 3, 0, 2, 3, 2]` verrà creato l' array `[0, 0, 0, 0]` con 4 posizioni perché il valore più alto è 3 
 (Deve esistere un indice 3)
 - Viene popolato l' array contando le corrispondenze **es: il numero 2 è presente 2 volte la cella all'indice 2 subirà due incrementi**. 
   Ogni volta che facciamo un incremento quel valore viene eliminato dal vettore
