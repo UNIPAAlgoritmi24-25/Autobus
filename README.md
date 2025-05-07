@@ -29,6 +29,15 @@ L'algoritmo ha una complessità di O(n<sup>2</sup>) ma è importante sottolinear
 accorgiamo che i nostri dati sono doppioni in oltre è preferibile che il numero di elementi sia considerevole
 ### 1.2 Merge Sort 
 ### 1.3 Bubblesort  
+L'algoritmo di Bubble Sort è uno degli algoritmi di ordinamento meno efficienti. Come altri algoritmi di ordinamento, ricostruisce un array ordinato partendo da uno non ordinato tramite una serie di scambi.
+
+Il procedimento consiste nell'utilizzare due cicli annidati: il primo punta a un elemento e il secondo punta all'elemento successivo. Se i due 
+elementi sono già in ordine, il secondo indice avanza; altrimenti, i due elementi vengono scambiati. Questo processo si ripete fino a quando 
+l'intero array risulta ordinato. 
+
+L'algoritmo di Bubble Sort non presenta miglioramenti con array semi ordinati e la sua complessita e di O(n<sup>2</sup>) dato da i due cicli che 
+scansionano l'array.
+
 ### 1.4 Insertionsort
 ### 1.5 Quicksort  
 
