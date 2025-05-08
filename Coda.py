@@ -14,7 +14,8 @@ class Coda:
             self.inizio = self.fine = nodo
         else:
             self.fine.successore = nodo
-            self.fine = self.fine.successore
+            nodo.precedente = self.fine
+            self.fine = nodo
 
     def rimuovi(self):
         if self.coda_vuota():
@@ -28,3 +29,11 @@ class Coda:
         else:
             self.inizio = self.fine = None
         return x.valore
+
+    def stampa(self):
+        inizio = self.inizio
+        output = []
+        while inizio:
+            output.append(inizio.valore)
+            inizio = inizio.successore
+        return output
