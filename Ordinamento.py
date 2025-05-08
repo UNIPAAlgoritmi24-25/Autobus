@@ -11,7 +11,7 @@ def dataset(taglie=None, negativi = True):
 
     output = []
     if not taglie:
-        taglie = [10,100,1000, 5000]
+        taglie = [10,100,1000, 5000, 10000]
     for taglia in taglie:
         temp = []
         for _ in range(taglia):
@@ -41,3 +41,11 @@ def bubble_sort(arr):
                 arr[j], arr[j + 1] = arr[j + 1], arr[j]
     return arr
 
+def quik_sort(arr):
+    return arr
+
+def marge_sort(arr):
+    return arr
+
+def insertion_sort(arr):
+    return arr

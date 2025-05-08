@@ -1,0 +1,133 @@
+
+#from gui.frames.sort import quik
+
+
+
+scelte = [
+    {
+        "nome": "Ordinamento",
+        "possibili": [
+            {
+                "nome": "Counting Sort",
+                "btn_text" : "Prova",
+                "btn_action": 0
+            },
+            {
+                "nome": "Merge Sort",
+                "btn_text" : "Prova",
+                "btn_action": 1
+            },
+            {
+                "nome": "Bubblesort",
+                "btn_text" : "Prova",
+                "btn_action": 2
+            },
+
+            {
+                "nome": "Insertionsort",
+                "btn_text" : "Prova",
+                "btn_action": 3
+            },
+
+            {
+                "nome": "Quicksort",
+                "btn_text" : "Prova",
+                "btn_action": 4
+            }
+        ]
+    },
+    {
+        "nome": "Strutture Dati Lineari",
+        "possibili": [
+            {
+                "nome": "Pila",
+                "btn_text": "Vai",
+                "btn_action": 5
+            },
+            {
+                "nome":"Coda",
+                "btn_text": "Vai",
+                "btn_action": 6
+            },
+            {
+                "nome": "Liste",
+                "btn_text": "Vai",
+                "btn_action": 7
+            }
+        ]
+    },
+    {
+        "nome": "Strutture Dati non Lineari",
+        "possibili": [
+            {
+                "nome": "Grafi",
+                "btn_text": "Visualizza",
+                "btn_action": 8
+            },
+            {
+                "nome": "Alberi",
+                "btn_text": "Visualizza",
+                "btn_action": 9
+            },
+            {
+                "nome": "Heap",
+                "btn_text": "Visualizza",
+                "btn_action": 10
+            }
+        ]
+    }
+]
+
+tipi = [
+    {
+        "nome":"Grafo",
+        "desc": "Lorem impulsum doe sit amet e Il file deve essere composto da tre campi che possono essere specificati secondo le norme di comportamento del programma ",
+        "btn_action": 11
+    },
+    {
+        "nome": "Matrice",
+        "desc": "Lorem impulsum doe sit amet e Il file deve essere composto da tre campi che possono essere specificati secondo le norme di comportamento del programma ",
+        "btn_action": 11
+    },
+    {
+        "nome": "Array",
+        "desc": "Lorem impulsum doe sit amet e Il file deve essere composto da tre campi che possono essere specificati secondo le norme di comportamento del programma ",
+        "btn_action": 11
+    },
+    {
+        "nome": "Pila",
+        "desc": "Lorem impulsum doe sit amet e Il file deve essere composto da tre campi che possono essere specificati secondo le norme di comportamento del programma ",
+        "btn_action": 11
+    },
+    {
+        "nome": "Coda",
+        "desc": "Lorem impulsum doe sit amet e Il file deve essere composto da tre campi che possono essere specificati secondo le norme di comportamento del programma ",
+        "btn_action": 11
+    },
+    {
+        "nome": "Albero",
+        "desc": "Lorem impulsum doe sit amet e Il file deve essere composto da tre campi che possono essere specificati secondo le norme di comportamento del programma ",
+        "btn_action": 11
+    },
+    {
+        "nome": "Lista Concatenata",
+        "desc": "Lorem impulsum doe sit amet e Il file deve essere composto da tre campi che possono essere specificati secondo le norme di comportamento del programma ",
+        "btn_action": 11
+    },
+]
+counting = [
+    {"tipo":1, "testo":"Il Counting Sort "},
+    {"tipo":0, "testo":"Il Counting Sort è un algoritmo di ordinamento non comparativo che utilizza un array ausiliario per contare il numero di occorrenze di ciascun elemento."},
+    {"tipo":1, "testo":""},
+    {"tipo":1, "testo":"Come funziona il test?"},
+    {"tipo":0, "testo":"Il programma crea un dataset contenenti dei numeri ordinati in maniera casuale Questi numeri vengono forniti all Algortmo che li ordinera."},
+    {"tipo":0, "testo": "Alla fine del'esequzione vedrai i risultati in una tabella sulla destra."},
+    {"tipo":1, "testo":""},
+    {"tipo":0, "testo":"La sua complessita e di O(n^2) Ma potrebbe degenerare consulta la documentazione per approfondire"},
+]
+
+bubble = []
+insertion = []
+marge = []
+quik = []
+
