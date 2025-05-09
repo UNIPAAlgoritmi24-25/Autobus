@@ -123,10 +123,20 @@ counting = [
     {"tipo":0, "testo":"Il programma crea un dataset contenenti dei numeri ordinati in maniera casuale Questi numeri vengono forniti all Algortmo che li ordinera."},
     {"tipo":0, "testo": "Alla fine del'esequzione vedrai i risultati in una tabella sulla destra."},
     {"tipo":1, "testo":""},
-    {"tipo":0, "testo":"La sua complessita e di O(n^2) Ma potrebbe degenerare consulta la documentazione per approfondire"},
+    {"tipo":0, "testo":"La sua complessita e di O(n+k) Ma potrebbe degenerare consulta la documentazione per approfondire"},
 ]
 
-bubble = []
+bubble = [
+    {"tipo": 1, "testo": "Il Bubble Sort "},
+    {"tipo": 0,
+     "testo": "Il Bubble Sort è uno degli algoritmi di ordinamento piu semplici usa due cicli con due puntatori per confrontare i valori contenuti nell array."},
+    {"tipo": 0,"testo": "La sua complessita e la più alta tra quelle che esaminiamo O(n^2)"},
+    {"tipo": 1, "testo": "Come funziona il test?"},
+    {"tipo": 0,
+     "testo": "Il programma crea un dataset contenenti dei numeri ordinati in maniera casuale Questi numeri vengono forniti all Algortmo che li ordinera."},
+    {"tipo": 0, "testo": "Alla fine del'esequzione vedrai i risultati in una tabella sulla destra."},
+
+]
 insertion = []
 marge = []
 quik = []
