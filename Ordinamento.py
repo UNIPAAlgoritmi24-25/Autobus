@@ -49,3 +49,13 @@ def marge_sort(arr):
 
 def insertion_sort(arr):
     return arr
+
+
+def get_alg():
+    return [
+        {"N": "bubble_sort", "F":bubble_sort},
+        {"N": "insertion_sort", "F": insertion_sort},
+        {"N": "quik_sort", "F": quik_sort},
+        {"N": "marge_sort", "F": marge_sort},
+        {"N": "counting_sort", "F": counting_sort},
+    ]

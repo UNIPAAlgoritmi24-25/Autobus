@@ -1,6 +1,6 @@
 import tkinter as tk
 from tkinter import ttk, filedialog
-import csv
+#equazione di ricorrenza e pseudocodice per lo scritto
 from gui.frames.home_frame import HomeFrame
 from gui.frames.sort.Counting import Counting
 from gui.frames.sort.Marge import Marge
@@ -9,12 +9,14 @@ from gui.frames.sort.Quik import Quik
 from gui.frames.sort.Insertion import Insertion
 from gui.frames.scelta_frame import SceltaFrame
 from gui.frames.apri_file_frame import ApriFile
+from gui.frames.sort.compara import Compara
+from gui.frames.pila import Pila
 
 
 
 class MainApp(tk.Tk):
     def dispatch(self, action):
-        frame = [Counting, Marge, Bubble, Insertion, Quik]
+        frame = [Counting, Marge, Bubble, Insertion, Quik, Compara, Pila]
 
         self.show_frame(frame[action])
 
@@ -54,12 +56,12 @@ class MainApp(tk.Tk):
         sort_menu.add_command(label="Insertion Sort", command=lambda: self.dispatch(3))
         sort_menu.add_command(label="Quick Sort", command=lambda: self.dispatch(4))
         sort_menu.add_separator()
-        sort_menu.add_command(label="Compara", command=self.quit)
+        sort_menu.add_command(label="Compara", command=lambda: self.dispatch(5))
         menu_bar.add_cascade(label="Ordinamento", menu=sort_menu)
 
         # Menu "Strutture Dati Lineari"
         linear_menu = tk.Menu(menu_bar, tearoff=0)
-        linear_menu.add_command(label="Pila", command=self.open_home)
+        linear_menu.add_command(label="Pila", command=lambda: self.dispatch(6))
         linear_menu.add_command(label="Coda", command=self.open_home)
         linear_menu.add_command(label="Liste", command=self.open_home)
         menu_bar.add_cascade(label="Lineari", menu=linear_menu)
@@ -77,6 +79,9 @@ class MainApp(tk.Tk):
             widget.destroy()
         frame = frame_class(self.container, self)
         frame.pack(fill="both", expand=True)
+
+    def open_home(self):
+        self.show_frame(HomeFrame)
 
     def open_home(self):
         self.show_frame(HomeFrame)

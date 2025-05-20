@@ -42,7 +42,7 @@ scelte = [
             {
                 "nome": "Pila",
                 "btn_text": "Vai",
-                "btn_action": 5
+                "btn_action": 6
             },
             {
                 "nome":"Coda",
@@ -140,4 +140,13 @@ bubble = [
 insertion = []
 marge = []
 quik = []
+
+Compara = [
+{"tipo": 1, "testo": "Comparazione tra algortmi"},
+{"tipo": 0, "testo": "Questa pagina ti permette di compare degli algortmi di ordinamento"},
+{"tipo": 1, "testo": "Come funziona?"},
+{"tipo": 0, "testo": "Generiamo un dataset contenente vari array di diverse grandezze e facciamo risolvere ad ogni algortmo lo stesso dataset prendendo i temppi di ogni eseguzione fatto cio generiamo un grafico"},
+{"tipo": 1, "testo": "Come leggo il grafico"},
+{"tipo": 0, "testo": "Se vogliamo ottenere i dati di una precisa eseguzione es: Trovare il tempo in secondi che ha impiegato un algortmo a risolvere una tagila Basterà cercare la linea del algortmo e leggere il valore y associato alla taglia che volevamo verificare"},
+]
 

@@ -1,45 +1,44 @@
 import time
 from tkinter import ttk
-from gui.menu import bubble as desc
-from gui.widgets.table import Table
+from gui.menu import Compara as desc
 import Ordinamento as ord
-class Bubble(ttk.Frame):
+import matplotlib.pyplot as plt
 
-    def cancella(self):
-        for widget in self.table_frame.winfo_children():
-            widget.destroy()
 
+class Compara(ttk.Frame):
     def test(self):
-        self.cancella()
-        self.label_test.config(text="Test in corso")
-        dataset = ord.dataset(negativi=False,  taglie=[100000,1000000])
-        risultati = []
+        dataset = ord.dataset(negativi=False)
+        dati = {}
 
-        for test in dataset:
-            start_time = time.time()
-            ord.bubble_sort(test)
-            end_time = time.time()
-            execution_time = end_time - start_time
-            risultati.append((len(test), f"{execution_time:.6f} s"))
-            self.cancella()
-            self.label_test.config(text=f"Test in corso: Dataset: {len(test)}, {execution_time:.6f} s")
+        for alg in ord.get_alg():
+            ris = []
+            etichetta = alg["N"]
+            for data in dataset:
+                start_time = time.time()
+                alg["F"](data[:])
+                end_time = time.time()
+                ris.append((len(data), end_time-start_time))
+            dati[etichetta] = ris
 
-        # Mostra "Finito"
-        self.cancella()
-        self.label_test.config(text="Finito")
+        # Traccia ogni linea
+        for etichetta, punti in dati.items():
+            x = [p[0] for p in punti]
+            y = [p[1] for p in punti]
+            plt.plot(x, y, label=etichetta)
 
-        # Pulisce vecchia tabella (se presente)
-
-
-        # Mostra nuova tabella
-        headers = ["Dimensione", "Tempo di esecuzione"]
-        Table(self.table_frame, headers, risultati)
+        # Etichette e legenda
+        plt.xlabel('Taglia (N)')  # asse X
+        plt.ylabel('Tempo (S)')  # asse Y
+        plt.title('Compara ordinamenti')
+        plt.legend()
+        plt.grid(True)
+        plt.show()
 
     def __init__(self, parent, controller=None):
         super().__init__(parent)
 
         # Etichette iniziali
-        ttk.Label(self, text="Bubble Sort", font=("Arial", 24)).pack(pady=20)
+        ttk.Label(self, text="Quik Sort", font=("Arial", 24)).pack(pady=20)
 
         # Creazione della riga
         riga = ttk.Frame(self)
@@ -67,4 +66,5 @@ class Bubble(ttk.Frame):
         self.table_frame.grid(row=2, column=1, sticky="", pady=10)
 
         riga.columnconfigure(1, weight=1)
+
 
