@@ -47,12 +47,12 @@ scelte = [
             {
                 "nome":"Coda",
                 "btn_text": "Vai",
-                "btn_action": 6
+                "btn_action": 7
             },
             {
                 "nome": "Liste",
                 "btn_text": "Vai",
-                "btn_action": 7
+                "btn_action": 8
             }
         ]
     },

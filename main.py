@@ -11,12 +11,13 @@ from gui.frames.scelta_frame import SceltaFrame
 from gui.frames.apri_file_frame import ApriFile
 from gui.frames.sort.compara import Compara
 from gui.frames.pila import Pila
+from gui.frames.coda import Coda
 
 
 
 class MainApp(tk.Tk):
     def dispatch(self, action):
-        frame = [Counting, Marge, Bubble, Insertion, Quik, Compara, Pila]
+        frame = [Counting, Marge, Bubble, Insertion, Quik, Compara, Pila, Coda]
 
         self.show_frame(frame[action])
 
@@ -62,7 +63,7 @@ class MainApp(tk.Tk):
         # Menu "Strutture Dati Lineari"
         linear_menu = tk.Menu(menu_bar, tearoff=0)
         linear_menu.add_command(label="Pila", command=lambda: self.dispatch(6))
-        linear_menu.add_command(label="Coda", command=self.open_home)
+        linear_menu.add_command(label="Coda", command=lambda: self.dispatch(7))
         linear_menu.add_command(label="Liste", command=self.open_home)
         menu_bar.add_cascade(label="Lineari", menu=linear_menu)
 
