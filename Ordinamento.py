@@ -58,3 +58,13 @@ def insertion_sort(arr):
         arr[j+1] = key     
 
     return arr
+
+def quicksort(arr):
+    if len(arr) <= 1:
+        return arr
+    else:
+        pivot = arr[len(arr) // 2]  
+        sinistra = [x for x in arr if x < pivot]
+        centro = [x for x in arr if x == pivot]
+        destra = [x for x in arr if x > pivot]
+        return quicksort(sinistra) + centro+ quicksort(destra)
