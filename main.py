@@ -12,12 +12,14 @@ from gui.frames.apri_file_frame import ApriFile
 from gui.frames.sort.compara import Compara
 from gui.frames.pila import Pila
 from gui.frames.coda import Coda
+from gui.frames.alberi import Albero
+from gui.frames.grafi import Grafo
 
 
 
 class MainApp(tk.Tk):
     def dispatch(self, action):
-        frame = [Counting, Marge, Bubble, Insertion, Quik, Compara, Pila, Coda]
+        frame = [Counting, Marge, Bubble, Insertion, Quik, Compara, Pila, Coda, Albero, Grafo]
 
         self.show_frame(frame[action])
 
@@ -42,12 +44,7 @@ class MainApp(tk.Tk):
         home_menu.add_command(label="Esci", command=self.quit)
         menu_bar.add_cascade(label="Home", menu=home_menu)
 
-        # Menu "File"
-        file_menu = tk.Menu(menu_bar, tearoff=0)
-        file_menu.add_command(label="Apri", command=self.open_file)
-        file_menu.add_command(label="Apri", command=self.ApriFile)
 
-        menu_bar.add_cascade(label="File", menu=file_menu)
 
         # Menu "Ordinamento"
         sort_menu = tk.Menu(menu_bar, tearoff=0)
@@ -64,13 +61,12 @@ class MainApp(tk.Tk):
         linear_menu = tk.Menu(menu_bar, tearoff=0)
         linear_menu.add_command(label="Pila", command=lambda: self.dispatch(6))
         linear_menu.add_command(label="Coda", command=lambda: self.dispatch(7))
-        linear_menu.add_command(label="Liste", command=self.open_home)
         menu_bar.add_cascade(label="Lineari", menu=linear_menu)
 
         # Menu "Strutture Dati non Lineari"
         non_linear_menu = tk.Menu(menu_bar, tearoff=0)
-        non_linear_menu.add_command(label="Grafi", command=self.open_home)
-        non_linear_menu.add_command(label="Alberi", command=self.open_home)
+        non_linear_menu.add_command(label="Grafi", command= lambda: self.dispatch(8))
+        non_linear_menu.add_command(label="Alberi", command= lambda: self.dispatch(9))
         menu_bar.add_cascade(label="Non Lineari", menu=non_linear_menu)
 
         self.config(menu=menu_bar)

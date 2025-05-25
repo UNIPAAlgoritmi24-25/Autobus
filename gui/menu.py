@@ -60,20 +60,14 @@ scelte = [
         "nome": "Strutture Dati non Lineari",
         "possibili": [
             {
-                "nome": "Grafi",
+                "nome": "Alberi",
                 "btn_text": "Visualizza",
                 "btn_action": 8
-            },
-            {
-                "nome": "Alberi",
+            },{
+                "nome": "Grafi",
                 "btn_text": "Visualizza",
                 "btn_action": 9
             },
-            {
-                "nome": "Heap",
-                "btn_text": "Visualizza",
-                "btn_action": 10
-            }
         ]
     }
 ]
@@ -137,9 +131,33 @@ bubble = [
     {"tipo": 0, "testo": "Alla fine del'esequzione vedrai i risultati in una tabella sulla destra."},
 
 ]
-insertion = []
-marge = []
-quik = []
+insertion = [
+    {"tipo": 1, "testo": "Insertion Sort"},
+    {"tipo": 0, "testo": "L'Insertion Sort è un algoritmo semplice che costruisce la lista ordinata un elemento alla volta, spostando ogni nuovo elemento nella posizione corretta."},
+    {"tipo": 0, "testo": "Ha una complessità nel caso peggiore di O(n^2), ma è efficiente per piccole quantità di dati o array quasi ordinati."},
+    {"tipo": 1, "testo": "Come viene testato?"},
+    {"tipo": 0, "testo": "Il programma genera una serie di numeri disordinati che vengono ordinati usando l'Insertion Sort."},
+    {"tipo": 0, "testo": "Al termine, i risultati saranno visibili nella tabella dei tempi di esecuzione."},
+]
+
+marge = [
+    {"tipo": 1, "testo": "Merge Sort"},
+    {"tipo": 0, "testo": "Il Merge Sort è un algoritmo divide-et-impera: divide l'array in due metà, le ordina ricorsivamente e le fonde."},
+    {"tipo": 0, "testo": "Ha una complessità O(n log n) in tutti i casi, ed è stabile ma utilizza memoria extra."},
+    {"tipo": 1, "testo": "In cosa consiste il test?"},
+    {"tipo": 0, "testo": "Il sistema crea un dataset disordinato che viene ordinato utilizzando il Merge Sort."},
+    {"tipo": 0, "testo": "I risultati finali verranno mostrati in una tabella comparativa con gli altri algoritmi."},
+]
+
+quik = [
+    {"tipo": 1, "testo": "Quick Sort"},
+    {"tipo": 0, "testo": "Il Quick Sort è un algoritmo molto efficiente che sceglie un elemento pivot e partiziona l'array attorno ad esso."},
+    {"tipo": 0, "testo": "Nel caso medio ha complessità O(n log n), ma nel caso peggiore può arrivare a O(n^2). Tuttavia, è spesso il più veloce in pratica."},
+    {"tipo": 1, "testo": "Come viene eseguito il test?"},
+    {"tipo": 0, "testo": "Il test genera un array di numeri casuali che vengono ordinati tramite Quick Sort."},
+    {"tipo": 0, "testo": "Alla fine vedrai i tempi di esecuzione nella tabella comparativa."},
+]
+
 
 Compara = [
 {"tipo": 1, "testo": "Comparazione tra algortmi"},
