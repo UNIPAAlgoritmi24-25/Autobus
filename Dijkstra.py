@@ -6,7 +6,6 @@ class Grafo:
         self.nodi = nodi if nodi is not None else []
         self.archi = archi if archi is not None else []
 
-    # ... (altri metodi del Grafo) ...
 
     def dijkstra(self, sorgente):
         distanze = {n: float('inf') for n in self.nodi}
