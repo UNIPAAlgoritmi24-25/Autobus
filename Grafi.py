@@ -179,6 +179,13 @@ class Grafo:
             destinazione = precedente[destinazione]
         return cammino
 
+# Esempio di utilizzo:
+# distanze, precedente = gra.dijkstra(n1)
+# for nodo in gra.nodi:
+#     print(f"Distanza da {n1} a {nodo}: {distanze[nodo]}")
+#     percorso = gra.ricostruisci_cammino(precedente, nodo)
+#     print("Percorso:", " -> ".join(str(n) for n in percorso))
+
 
 
 n1 = Nodo("1")
