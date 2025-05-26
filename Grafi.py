@@ -1,6 +1,7 @@
 import Coda
 import utility
 import Liste
+import heapq
 from enum import Enum
 
 class COLORE(Enum):
