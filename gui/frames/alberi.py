@@ -59,7 +59,7 @@ class Albero(ttk.Frame):
         self.entry_valore = ttk.Entry(self.comandi)
         self.entry_valore.grid(row=8, column=1, padx=10, pady=5)
         btn_cerca = ttk.Button(self.comandi, text="Cerca", command=self.cerca_valore)
-        btn_cerca.grid(row=8, column=3, padx=10, pady=5)
+        btn_cerca.grid(row=8, column=2, padx=10, pady=5)
 
         # Campo per inserire valore da cercare
         self.label_ins = ttk.Label(self.comandi,text="Inserisci valore da Inserire")
@@ -67,7 +67,7 @@ class Albero(ttk.Frame):
         self.ins_valore = ttk.Entry(self.comandi)
         self.ins_valore.grid(row=9, column=1, padx=10, pady=5)
         btn_ins = ttk.Button(self.comandi, text="Ins", command=self.ins_valore_fn)
-        btn_ins.grid(row=9, column=3, padx=10, pady=5)
+        btn_ins.grid(row=9, column=2, padx=10, pady=5)
 
         # Pulsante stampa struttura albero (visiva)
         ttk.Label(self.comandi, text="Elimina un valore").grid(row=10, column=0, padx=10, pady=5)
