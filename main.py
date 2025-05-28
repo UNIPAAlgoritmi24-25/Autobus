@@ -65,8 +65,8 @@ class MainApp(tk.Tk):
 
         # Menu "Strutture Dati non Lineari"
         non_linear_menu = tk.Menu(menu_bar, tearoff=0)
-        non_linear_menu.add_command(label="Grafi", command= lambda: self.dispatch(8))
-        non_linear_menu.add_command(label="Alberi", command= lambda: self.dispatch(9))
+        non_linear_menu.add_command(label="Grafi", command= lambda: self.dispatch(9))
+        non_linear_menu.add_command(label="Alberi", command= lambda: self.dispatch(8))
         menu_bar.add_cascade(label="Non Lineari", menu=non_linear_menu)
 
         self.config(menu=menu_bar)

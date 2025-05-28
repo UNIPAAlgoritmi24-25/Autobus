@@ -21,17 +21,19 @@ class Albero:
         self.radice = None  # Inizialmente l'albero è vuoto
 
     def stampa(self, nodo=None, livello=1):
-        """Stampa l'albero in modo visuale."""
+        """Restituisce una rappresentazione visuale dell'albero sotto forma di stringa."""
         if nodo is None:
             nodo = self.radice
+        risultato = ""
         if nodo is not None:
             prefisso = "    " * (livello - 1)
             prefisso += "└── " if livello != 1 else ""
-            print(f"{prefisso}{nodo.etichetta}")
+            risultato += f"{prefisso}{nodo.etichetta}\n"
             if nodo.nodo_sinistro:
-                self.stampa(nodo.nodo_sinistro, livello + 1)
+                risultato += self.stampa(nodo.nodo_sinistro, livello + 1)
             if nodo.nodo_destro:
-                self.stampa(nodo.nodo_destro, livello + 1)
+                risultato += self.stampa(nodo.nodo_destro, livello + 1)
+        return risultato
 
 
 # Albero binario di ricerca (ordinato)

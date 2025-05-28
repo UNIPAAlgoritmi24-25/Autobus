@@ -1,6 +1,7 @@
 import Coda
 import utility
 import Liste
+import itertools
 import heapq
 from enum import Enum
 
@@ -152,15 +153,16 @@ class Grafo:
             u.colore = COLORE.NERO
 
         return output
-        
+
     def dijkstra(self, sorgente):
         distanze = {n: float('inf') for n in self.nodi}
         precedente = {n: None for n in self.nodi}
         distanze[sorgente] = 0
-        heap = [(0, sorgente)]
+        contatore = itertools.count()
+        heap = [(0, next(contatore), sorgente)]
 
         while heap:
-            distanza_u, u = heapq.heappop(heap)
+            distanza_u, _, u = heapq.heappop(heap)
             for arco in self.archi:
                 if arco.partenza == u:
                     v = arco.destinazione
@@ -168,9 +170,10 @@ class Grafo:
                     if distanze[u] + peso < distanze[v]:
                         distanze[v] = distanze[u] + peso
                         precedente[v] = u
-                        heapq.heappush(heap, (distanze[v], v))
+                        heapq.heappush(heap, (distanze[v], next(contatore), v))
 
         return distanze, precedente
+
 
     def ricostruisci_cammino(self, precedente, destinazione):
         cammino = []
@@ -179,12 +182,7 @@ class Grafo:
             destinazione = precedente[destinazione]
         return cammino
 
-# Esempio di utilizzo:
-# distanze, precedente = gra.dijkstra(n1)
-# for nodo in gra.nodi:
-#     print(f"Distanza da {n1} a {nodo}: {distanze[nodo]}")
-#     percorso = gra.ricostruisci_cammino(precedente, nodo)
-#     print("Percorso:", " -> ".join(str(n) for n in percorso))
+
 
 
 
@@ -194,16 +192,25 @@ n3 = Nodo("3")
 n4 = Nodo("4")
 n5 = Nodo("5")
 a1 = Arco(n1, n2, 1)
-a2 = Arco(n1, n5, 1)
-a3 = Arco(n2, n5, 1, True)
-a4 = Arco(n5, n4, 1)
-a5 = Arco(n2, n4, 1)
-a6 = Arco(n2, n3, 1)
-a7 = Arco(n4, n3, 1)
+a2 = Arco(n1, n5, 10)
+a3 = Arco(n2, n5, 15, True)
+a4 = Arco(n5, n4, 3)
+a5 = Arco(n2, n4, 20)
+a6 = Arco(n2, n3, 16)
+a7 = Arco(n4, n3, 150)
 
 
 
 gra = Grafo([n1, n2, n3, n4, n5], [a1, a2, a3, a4, a5, a6, a7])
+
+
+# Esempio di utilizzo:
+distanze, precedente = gra.dijkstra(n1)
+for nodo in gra.nodi:
+    print(f"Distanza da {n1} a {nodo}: {distanze[nodo]}")
+    percorso = gra.ricostruisci_cammino(precedente, nodo)
+    print("Percorso:", " -> ".join(str(n) for n in percorso))
+
 print("Grado di n3:")
 print(gra.grado(n3))
 
