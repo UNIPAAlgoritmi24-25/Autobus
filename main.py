@@ -33,6 +33,7 @@ class MainApp(tk.Tk):
         self.container.pack(fill="both", expand=True)
 
         self.show_frame(HomeFrame)
+        self.dispatch(-1) # ELIMINARE - redict automatico alla pagina di lavoro - Elimina questa riga prima consegnare
 
     def create_menu(self):
         menu_bar = tk.Menu(self)

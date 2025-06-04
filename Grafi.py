@@ -154,6 +154,50 @@ class Grafo:
 
         return output
 
+    def prim(self, sorgente):
+        chiave = {n: float('inf') for n in self.nodi}
+        padre = {n: None for n in self.nodi}
+        chiave[sorgente] = 0
+        contatore = itertools.count()
+        heap = [(0, next(contatore), sorgente)]
+        in_mst = set()
+
+        while heap:
+            _, _, u = heapq.heappop(heap)
+
+            if u in in_mst:
+                continue  # Salta se è già nel MST
+
+            in_mst.add(u)
+
+            for arco in self.archi:
+                # Considera entrambi i versi se il grafo è non orientato
+                if arco.partenza == u:
+                    v = arco.destinazione
+                elif not arco.senso_unico and arco.destinazione == u:
+                    v = arco.partenza
+                else:
+                    continue
+
+                if v not in in_mst and arco.peso < chiave[v]:
+                    chiave[v] = arco.peso
+                    padre[v] = u
+                    heapq.heappush(heap, (chiave[v], next(contatore), v))
+
+        # Ricostruzione dell'MST come lista di archi
+        mst = []
+        for nodo in self.nodi:
+            if padre[nodo]:
+                peso = next(
+                    arco.peso for arco in self.archi
+                    if (arco.partenza == padre[nodo] and arco.destinazione == nodo) or
+                    (not arco.senso_unico and arco.destinazione == padre[nodo] and arco.partenza == nodo)
+                )
+                mst.append(Arco(padre[nodo], nodo, peso))
+
+        return mst
+
+
     def dijkstra(self, sorgente):
         distanze = {n: float('inf') for n in self.nodi}
         precedente = {n: None for n in self.nodi}
@@ -193,7 +237,7 @@ n4 = Nodo("4")
 n5 = Nodo("5")
 a1 = Arco(n1, n2, 1)
 a2 = Arco(n1, n5, 10)
-a3 = Arco(n2, n5, 15, True)
+a3 = Arco(n2, n5, 15)
 a4 = Arco(n5, n4, 3)
 a5 = Arco(n2, n4, 20)
 a6 = Arco(n2, n3, 16)
@@ -204,40 +248,9 @@ a7 = Arco(n4, n3, 150)
 gra = Grafo([n1, n2, n3, n4, n5], [a1, a2, a3, a4, a5, a6, a7])
 
 
-# Esempio di utilizzo:
-distanze, precedente = gra.dijkstra(n1)
-for nodo in gra.nodi:
-    print(f"Distanza da {n1} a {nodo}: {distanze[nodo]}")
-    percorso = gra.ricostruisci_cammino(precedente, nodo)
-    print("Percorso:", " -> ".join(str(n) for n in percorso))
-
-print("Grado di n3:")
-print(gra.grado(n3))
-
-print("Grado Massimo:")
-print(gra.grado_massimo())
-
-
-print("Grado Minimo:")
-print(gra.grado_minimo())
-
-print(gra.descrivi())
-
 print("Grafo nullo")
 print(gra.nullo())
 
-print("adiacenza_m")
-utility.stampa_matrice_2x2(gra.adiacenza_m())
-
-print("adiacenza_l")
-for b in (gra.adiacenza_l()):
-    b.scansiona()
-
-print("Indicenza")
-utility.stampa_matrice_2x2(gra.indicenza())
 
 
-print("visita_BFS")
-for nodo in gra.visita_BFS(1):
-    print(nodo)
 

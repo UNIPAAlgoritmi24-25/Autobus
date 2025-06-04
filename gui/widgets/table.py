@@ -11,7 +11,7 @@ class Table:
         for i, row in enumerate(data, start=1):
             entry_row = []
             for j, val in enumerate(row):
-                e = tk.Entry(root, width=20, fg='blue', font=('Arial', 12))
+                e = tk.Entry(root, width=5, fg='blue', font=('Arial', 12))
                 e.grid(row=i, column=j, sticky="nsew")
                 e.insert(tk.END, val)
                 entry_row.append(e)
