@@ -2,7 +2,7 @@ from tkinter import ttk
 from gui.widgets.table import Table
 from tkinter import filedialog, messagebox
 import Grafi as stu  # Questo è il modulo dove hai definito la classe Pila con Nodo
-
+import bellman_ford
 
 
 
@@ -86,12 +86,21 @@ class Grafo(ttk.Frame):
         btn_prim = ttk.Button(self.comandi, text="Prim", command=self.prim)
         btn_dijkstra = ttk.Button(self.comandi, text="Dijkstra", command=self.dijkstra)
         btn_visita_bfs = ttk.Button(self.comandi, text="Visiita BFS", command=self.bfs)
+        btn_belfor = ttk.Button(self.comandi, text="B. Ford", command=self.belfor)
 
         self.entry_algortmi.grid(row=i, column=1, padx=10, pady=5)
         label.grid(row=i, column=0, padx=10, pady=5)
         btn_prim.grid(row=i, column=4, padx=10, pady=5)
         btn_dijkstra.grid(row=i, column=2, padx=10, pady=5)
         btn_visita_bfs.grid(row=i, column=3, padx=10, pady=5)
+        btn_belfor.grid(row=i, column=5, padx=10, pady=5)
+
+
+        i += 1
+        label = ttk.Label(self.comandi, text="Grafo Nullo:")
+        btn_null = ttk.Button(self.comandi, text="Verifica", command=self.nullo)
+        label.grid(row=i, column=0, padx=10, pady=5)
+        btn_null.grid(row=i, column=1, padx=10, pady=5)
 
     def rapresenta_in_mat(self):
         self.label_stampa.config(text="Incidenza")
@@ -131,6 +140,9 @@ class Grafo(ttk.Frame):
         else:
             self.label_stampa.config(text=f"Nodo con valore cervato: {x}")
 
+    def nullo(self):
+        self.label_stampa.config(text=f"{self.gra.nullo()}")
+
 
     def bfs(self):
         x = self.cerca_nodo(self.entry_algortmi.get())
@@ -140,6 +152,19 @@ class Grafo(ttk.Frame):
             y = ""
             for nodo in self.gra.visita_BFS(self.gra.nodi.index(x)):
                 y += f"{str(nodo)}, "
+
+            self.label_stampa.config(text=f"{y}")
+
+    def belfor(self):
+        x = self.cerca_nodo(self.entry_algortmi.get())
+        if x is False:
+            self.label_stampa.config(text="Non Esiste")
+        else:
+            z = bellman_ford.bellman_ford(self.gra, x)
+            print(z)
+            y = f"Distanze: \n"
+            for (key, value) in z.items():
+                y += f"Nodo: {str(key)} Distanza: {value} \n"
 
             self.label_stampa.config(text=f"{y}")
 
@@ -167,6 +192,7 @@ class Grafo(ttk.Frame):
                 risultato += "Percorso: " + " -> ".join(str(n) for n in percorso) + "\n\n"
 
             self.label_stampa.config(text=risultato)
+            print(risultato)
 
     def grado_min(self):
         self.label_stampa.config(text=f"grado min pari ha {self.gra.grado_minimo()}")
