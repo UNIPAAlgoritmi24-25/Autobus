@@ -1,5 +1,4 @@
 import Coda
-import utility
 import Liste
 import itertools
 import heapq
@@ -36,7 +35,7 @@ class Grafo:
         self.archi = archi if archi is not None else []
 
     def nullo(self):
-        return not len(self.nodi) > 0
+        return not len(self.archi) > 0
 
     def adiacenza_m(self):
         matrice = [[0] * len(self.nodi) for _ in range(len(self.nodi))]
@@ -226,30 +225,6 @@ class Grafo:
             destinazione = precedente[destinazione]
         return cammino
 
-
-
-
-
-n1 = Nodo("1")
-n2 = Nodo("2")
-n3 = Nodo("3")
-n4 = Nodo("4")
-n5 = Nodo("5")
-a1 = Arco(n1, n2, 1)
-a2 = Arco(n1, n5, 10)
-a3 = Arco(n2, n5, 15)
-a4 = Arco(n5, n4, 3)
-a5 = Arco(n2, n4, 20)
-a6 = Arco(n2, n3, 16)
-a7 = Arco(n4, n3, 150)
-
-
-
-gra = Grafo([n1, n2, n3, n4, n5], [a1, a2, a3, a4, a5, a6, a7])
-
-
-print("Grafo nullo")
-print(gra.nullo())
 
 
 

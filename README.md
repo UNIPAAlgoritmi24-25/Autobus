@@ -3,9 +3,7 @@
  
 ## 1 Funzionalità
 ### 1.1 GUI
-### 1.2 Massimo e minimo  
-### 1.3 Ricerca  
-### 1.4 Predecessore e successore  
+
 ### 1.5 Input/Output (File o tastiera)  
 
 ## 2.  Dependency
@@ -22,25 +20,29 @@ Restituiscono una lista dove ogni uno degli elementi segue la legge secondo la q
 > Per far in modo che il software funzioni correttamente anche nel ordinamento di un vettore di oggetti quindi è necessario definire i metodi 
 > `__lt__` e `__gt__` per poter usare gli operatori di confronto anche su istanze di classi
 
-### 1.1 Counting Sort
+Ecco la spiegazione completa per **3.2 Merge Sort**, **3.4 Insertion Sort** e **3.5 Quicksort**, in modo coerente con le altre sezioni:
+ ### 1.1 Counting Sort
 
 - L'algoritmo in oggetto partendo dall'array che deve ordinare crea un nuovo array con l'obbiettivo di contare i valori presenti più volte.
-Quindi se questo è l' array di partenza `[2, 3, 0, 2, 3, 2]` verrà creato l' array `[0, 0, 0, 0]` con 4 posizioni perché il valore più alto è 3 
+Quindi se questo è l' array di partenza [2, 3, 0, 2, 3, 2] verrà creato l' array [0, 0, 0, 0] con 4 posizioni perché il valore più alto è 3 
 (Deve esistere un indice 3)
 - Viene popolato l' array contando le corrispondenze **es: il numero 2 è presente 2 volte la cella all'indice 2 subirà due incrementi**. 
   Ogni volta che facciamo un incremento quel valore viene eliminato dal vettore
-  Quindi otterremo i due array `[]` e `[ 1, 0, 3, 2]`
+  Quindi otterremo i due array [] e [ 1, 0, 3, 2]
 - Ora ricostruiamo il valore originale avendo pero cura di mettere gli elementi in ordine per farlo scansioniamo l' array del conteggio e vediamo 
   che abbiamo 1 elemento con valore 0 lo sappiamo perché l'indicè representa il valore mentre il numero rapresenta il numero di valori
 - Quindi inseriamo 1 elemento con valore 0 nell' array e decrementiamo di 1 l'elemento all'indice 0 nell' array di conteggio. Quindi il valore 
-  attuale sara `[0]` per l' array di output e `[0, 0, 3, 2]` per l' array di conteggio dato che il valore che stiamo usando è arrivato a 0 ci 
+  attuale sara [0] per l' array di output e [0, 0, 3, 2] per l' array di conteggio dato che il valore che stiamo usando è arrivato a 0 ci 
   spostiamo più in là e riprendiamo l'esecuzione.
 - fiche non troviamo nessun valore nell' array di conteggio in quel caso abbiamo terminato
 
 L'algoritmo ha una complessità di O(n<sup>2</sup>) ma è importante sottolineare che questo algortmo va utilizato se da una analisi dei dati ci 
 accorgiamo che i nostri dati sono doppioni in oltre è preferibile che il numero di elementi sia considerevole
-### 3.2 Merge Sort 
-### 3.3 Bubblesort  
+
+### 3.2 Merge Sort
+
+Merge Sort è un algoritmo di ordinamento che utilizza la strategia divide et impera. Divide ricorsivamente l'array in due metà fino a ottenere sottovettori di dimensione uno (che sono considerati ordinati). Successivamente, fonde (merge) queste sottosequenze ordinate per ottenere array più grandi ordinati, fino a ricostruire l'array completo ordinato. La fusione avviene confrontando gli elementi dei due sottovettori e inserendo nell’array di output l’elemento minore in modo ordinato. La complessità temporale di Merge Sort è O(n log n) in tutti i casi, rendendolo molto efficiente per grandi quantità di dati. Tuttavia, richiede spazio aggiuntivo proporzionale alla dimensione dell'array da ordinare.
+ ### 3.3 Bubblesort  
 L'algoritmo di Bubble Sort è uno degli algoritmi di ordinamento meno efficienti. Come altri algoritmi di ordinamento, ricostruisce un array ordinato partendo da uno non ordinato tramite una serie di scambi.
 
 Il procedimento consiste nell'utilizzare due cicli annidati: il primo punta a un elemento e il secondo punta all'elemento successivo. Se i due 
@@ -50,18 +52,34 @@ l'intero array risulta ordinato.
 L'algoritmo di Bubble Sort non presenta miglioramenti con array semi ordinati e la sua complessita e di O(n<sup>2</sup>) dato da i due cicli che 
 scansionano l'array.
 
-### 3.4 Insertionsort
-### 3.5 Quicksort  
+### 3.4 Insertion Sort
+
+Insertion Sort è un algoritmo di ordinamento semplice ed efficiente per array piccoli o quasi ordinati. Funziona scorrendo l'array da sinistra a destra, prendendo un elemento alla volta e inserendolo nella posizione corretta rispetto agli elementi già ordinati a sinistra. Questo avviene spostando gli elementi maggiori verso destra per fare spazio al nuovo elemento. L’algoritmo ha complessità O(n²) nel caso peggiore, ma può raggiungere O(n) se l’array è già quasi ordinato, poiché riduce il numero di spostamenti. È facile da implementare e stabile, cioè mantiene l’ordine degli elementi uguali.
+ 
+
+### 3.5 Quicksort
+
+Quicksort è uno degli algoritmi di ordinamento più usati e veloci nella pratica. Anche questo usa la strategia divide et impera: seleziona un elemento chiamato **pivot** e partiziona l’array in due sottovettori, uno con gli elementi minori o uguali al pivot e uno con quelli maggiori. Quindi ordina ricorsivamente questi due sottovettori. La scelta del pivot è cruciale per l’efficienza: un buon pivot permette di ottenere una divisione equilibrata dell’array. La complessità media di Quicksort è O(n log n), ma nel caso peggiore (ad esempio array già ordinati con pivot sempre minimo o massimo) può degradare a O(n²). Quicksort è molto efficiente nella pratica ed è spesso preferito a Merge Sort per via della minore necessità di spazio aggiuntivo.
+
+ 
 
 # 4. Strutture Dati  
 ### 4.1 Liste  
-
+La lista è una struttura dati che memorizza una sequenza ordinata di elementi, consentendo l’accesso, l’inserimento e la rimozione di elementi in 
+posizioni arbitrarie. è stata implementata come lista collegata (linked list). La lista è più 
+flessibile di pila e coda perché non ha vincoli rigidi su dove si può inserire o rimuovere un elemento, ed è molto usata per gestire collezioni di 
+dati ordinati o modificabili.
 ### 4.2 Pile  
-
+La pila è una struttura dati lineare che segue la logica LIFO (Last In, First Out), cioè "l'ultimo elemento inserito è il primo a uscire". Le due 
+operazioni principali sono push, che inserisce un elemento in cima alla pila, e pop, che rimuove l'elemento più recente inserito.
 ### 4.3 Code  
- 
+ La coda è una struttura dati lineare che segue la logica FIFO (First In, First Out), cioè "il primo elemento inserito è il primo a uscire". Le 
+ due operazioni principali sono enqueue, che inserisce un elemento in fondo alla coda, e dequeue, che rimuove l'elemento in testa alla coda. 
 ### 4.4 Alberi
-Gli **alberi** sono strutture dati non lineari. Proprio come le liste, ogni nodo contiene informazioni utili a identificare i propri figli, che a loro volta sono nodi. Tuttavia, a differenza delle liste, ogni nodo di un albero può avere più di un singolo successore. Il tipo di albero dipende infatti dal numero di successori che un nodo può avere. Se il numero di figli di ogni nodo è uguale o minore a due, si parla di **albero binario**; altrimenti, si parla semplicemente di **albero** o, se il numero di figli è definito, di **albero N-ario**.
+Gli **alberi** sono strutture dati non lineari. Proprio come le liste, ogni nodo contiene informazioni utili a identificare i propri figli, che a 
+loro volta sono nodi. Tuttavia, a differenza delle liste, ogni nodo di un albero può avere più di un singolo successore. Il tipo di albero 
+dipende infatti dal numero di successori che un nodo può avere. Se il numero di figli di ogni nodo è uguale o minore a due, si parla di **albero  
+binario**; altrimenti, si parla semplicemente di **albero** o, se il numero di figli è definito, di **albero N-ario**.
 
 La struttura dati è chiamata "albero" perché ricorda la forma di un albero capovolto. Seguendo questa analogia, il punto iniziale della struttura viene chiamato **radice**, mentre i nodi terminali sono detti **foglie**. Inoltre, vengono chiamate **rami** le connessioni tra i vari nodi, che nel codice sono rappresentate da variabili definite come puntatori ai nodi figli.
 
@@ -104,6 +122,10 @@ ciclo
 Il cammico che conette due punti con il minor numero di archi è detto cammino minimo.
 
 é possibile rapresentare un grafo per `Indicenza` e per `Addiacenza`
+
+![diagramma_gra.png](assets/diagramma_gra.png)
+Il Grafo che usiamo nel esercizio
+
 #### 2.5.1 Addiacenza
 Nella rappresentazione tramite matrici di adiacenza i vertici vengono numerati da 1 a N. Si definisce una 
 matrice NxN dove a<sub>ij</sub> verrà valorizata: 
@@ -189,11 +211,20 @@ un attributo chiamato colore:
 L’esplorazione avviene utilizzando una coda FIFO per garantire l’ordine corretto nella visita.
 
 ### 2.5.4 Cammini minimi
+| Caratteristica              | **Dijkstra**                   | **Bellman-Ford**                         |
+| --------------------------- | ------------------------------ | ---------------------------------------- |
+|  Gestisce pesi positivi     | Sì                             | Sì                                       |
+|  Gestisce pesi **negativi** | **No**                         |  **Sì**                                  |
+|  Rileva cicli negativi      | No                             |  **Sì**                                  |
+| Complessità (con heap)      | **O((V + E) log V)**           | O(V × E)                                 |
+|  Semplicità implementativa | Più complesso (con coda prior.) | Più semplice                             |
+|  Calcola i **percorsi minimi** |  (con `predecessore`)          | Solo se lo aggiungi tu                   |
+|  Output                   | Distanze + Percorsi            | Distanze (o anche percorsi, se modificato) |
+ 
 
-## 3 Funzionalità
-
-- Massimo e minimo  
-- Ricerca  
-- Predecessore e successore  
-- Input/Output (File o tastiera)  
-
+| Algoritmo    | Problema risolto                   | Pesi negativi?  | Tipo grafo                | Applicazione tipo           |
+| ------------ | ---------------------------------- | --------------- | ------------------------- | --------------------------- |
+| Bellman-Ford | Cammini minimi (con pesi negativi) | Sì              | Orientato                 | Reti, finanza (arbitraggio) |
+| Dijkstra     | Cammini minimi (pesi non negativi) | No              | Orientato o non orientato | GPS, routing, robotica      |
+| Prim         | Albero di copertura minimo         | Non applicabile | Non orientato             | Reti elettriche, strade     |
+| Kruskal      | Albero di copertura minimo         | Non applicabile | Non orientato             | Reti, clustering            |
