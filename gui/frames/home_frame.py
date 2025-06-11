@@ -31,4 +31,4 @@ class HomeFrame(ttk.Frame):
                 bottone.pack(side="right")
 
 
-        ttk.Label(self, text="Nomi", font=("Arial", 9), anchor="w").pack()
+        ttk.Label(self, text="https://github.com/UNIPAAlgoritmi24-25/Autobus.git", font=("Arial", 9), anchor="w").pack()

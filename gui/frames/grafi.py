@@ -1,7 +1,8 @@
+from numbers import Number
 from tkinter import ttk
 from gui.widgets.table import Table
 from tkinter import filedialog, messagebox
-import Grafi as stu  # Questo è il modulo dove hai definito la classe Pila con Nodo
+import Grafi as stu
 import bellman_ford
 
 
@@ -47,8 +48,12 @@ class Grafo(ttk.Frame):
 
 
         i=0
+        btn_open = ttk.Button(self.comandi, text="Carica da file", command=self.leggi_file)
+        btn_open.grid(row=i, column=0, padx=10, pady=5)
+
+        i+=1
         # Campo per inserire valore da cercare
-        self.label = ttk.Label(self.comandi,text="Inserisci valore da cercare")
+        self.label = ttk.Label(self.comandi,text="Inserischi valore da cercare")
         self.label.grid(row=i, column=0, padx=10, pady=5)
         self.entry_valore = ttk.Entry(self.comandi)
         self.entry_valore.grid(row=i, column=1, padx=10, pady=5)
@@ -56,7 +61,6 @@ class Grafo(ttk.Frame):
         btn_cerca.grid(row=i, column=2, padx=10, pady=5)
 
         i+=1
-        # Campo per inserire valore da cercare
         label = ttk.Label(self.comandi,text="Grado")
         self.grado_valore = ttk.Entry(self.comandi)
         grado_btn = ttk.Button(self.comandi, text="Calcola Grado", command=self.grado)
@@ -102,6 +106,11 @@ class Grafo(ttk.Frame):
         label.grid(row=i, column=0, padx=10, pady=5)
         btn_null.grid(row=i, column=1, padx=10, pady=5)
 
+        label = ttk.Label(self.comandi, text="Densita")
+        btn_den = ttk.Button(self.comandi, text="Calcola", command=self.densita)
+        label.grid(row=i, column=2, padx=10, pady=5)
+        btn_den.grid(row=i, column=3, padx=10, pady=5)
+
     def rapresenta_in_mat(self):
         self.label_stampa.config(text="Incidenza")
         # Pulisce vecchia tabella (se presente)
@@ -142,7 +151,8 @@ class Grafo(ttk.Frame):
 
     def nullo(self):
         self.label_stampa.config(text=f"{self.gra.nullo()}")
-
+    def densita(self):
+        self.label_stampa.config(text=f"La Densità calcolatà è pari a: {self.gra.densita()}")
 
     def bfs(self):
         x = self.cerca_nodo(self.entry_algortmi.get())
@@ -210,6 +220,7 @@ class Grafo(ttk.Frame):
             print(x)
             self.label_stampa.config(text=f"{x} ha grado pari ha {self.gra.grado(x)}")
 
+
     def cerca_nodo(self, r):
         for nodo in self.gra.nodi:
             if nodo.etichetta == r:
@@ -225,8 +236,27 @@ class Grafo(ttk.Frame):
             try:
                 with open(percorso_file, "r", encoding="utf-8") as file:
                     contenuto = file.read()
+                    righe = contenuto.split("\n")
 
-                    messagebox.showinfo("Successo", f"Inseriti {len(contenuto)} nodi nell'albero.")
+                    if len(righe) != len(righe[0].split(" ")):
+                        return messagebox.showinfo("Formaot errato", f"Sei sicuro che il file sia corretto? Nelle matrici di adiacenza le riche e le colonne dovono essere uguali")
+                    nodi = []
+                    archi = []
+                    for indice, peso in enumerate(righe[0].split(" ")):
+                        nodi.append(stu.Nodo(str(indice)))
+
+                    for indice, riga in enumerate(righe):
+                        partenza = nodi[indice]
+                        if len(riga.split(" ")) != len(righe):
+                            return messagebox.showinfo("Formato errato",f"Valori mancanti")
+
+                        for arrivo, cella in enumerate(riga.split(" ")):
+                            if int(cella) > 0:
+                                archi.append(stu.Arco(partenza,nodi[arrivo],cella))
+                    print(self.gra.descrivi())
+                    print(self.gra.densita())
+                    self.gra = stu.Grafo(nodi, archi)
+                    messagebox.showinfo("Successo", f"Caricato")
 
             except Exception as e:
                 messagebox.showerror("Errore", f"Errore durante la lettura: {e}")
