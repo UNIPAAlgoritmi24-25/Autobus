@@ -13,7 +13,7 @@ class Marge(ttk.Frame):
 
         for test in dataset:
             start_time = time.time()
-            ord.marge_sort(test)
+            ord.merge_sort(test)
             end_time = time.time()
             execution_time = end_time - start_time
             risultati.append((len(test), f"{execution_time:.6f} s"))

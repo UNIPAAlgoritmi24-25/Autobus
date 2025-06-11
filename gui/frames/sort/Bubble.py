@@ -12,7 +12,7 @@ class Bubble(ttk.Frame):
     def test(self):
         self.cancella()
         self.label_test.config(text="Test in corso")
-        dataset = ord.dataset(negativi=False,  taglie=[100000,1000000])
+        dataset = ord.dataset(negativi=False,  taglie=[10,50,100,1000])
         risultati = []
 
         for test in dataset:

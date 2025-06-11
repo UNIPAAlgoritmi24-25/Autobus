@@ -20,6 +20,10 @@ class Pila(ttk.Frame):
         rimuovi.grid(row=1, column=0, padx=5, pady=5)
         vuota.grid(row=2, column=0, padx=5, pady=5)
 
+        self.label_rimosso = ttk.Label(self.table_frame, text="")
+        self.label_rimosso.grid(row=1, column=1)
+
+
         self.label_vuota = ttk.Label(self.table_frame, text="")
         self.label_vuota.grid(row=2, column=1)
 
@@ -50,8 +54,9 @@ class Pila(ttk.Frame):
             self.aggiorna_stack()
 
     def rimuovi_valore(self):
-        self.pila.rimuovi()
+        x = self.pila.rimuovi()
         self.aggiorna_stack()
+        self.label_rimosso.config(text=x)
 
     def controlla_vuota(self):
         vuota = self.pila.pila_vuota()

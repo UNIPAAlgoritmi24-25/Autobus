@@ -7,12 +7,12 @@ class Quik(ttk.Frame):
     def test(self):
 
         self.label_test.config(text="Test in corso")
-        dataset = ord.dataset(negativi=False, taglie=[100000,1000000])
+        dataset = ord.dataset(negativi=False, taglie=[10, 5000,100000,1000000])
         risultati = []
 
         for test in dataset:
             start_time = time.time()
-            ord.quik_sort(test)
+            ord.quicksort(test)
             end_time = time.time()
             print(start_time)
             print(end_time)

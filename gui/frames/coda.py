@@ -23,6 +23,8 @@ class Coda(ttk.Frame):
         self.label_vuota = ttk.Label(self.table_frame, text="")
         self.label_vuota.grid(row=2, column=1)
 
+        self.label_rimosso = ttk.Label(self.table_frame, text="")
+        self.label_rimosso.grid(row=1, column=1)
         self.coda = stru.Coda()  # Istanza della struttura dati Coda
 
         self.queue_frame = ttk.Frame(self)
@@ -50,17 +52,12 @@ class Coda(ttk.Frame):
             self.aggiorna_coda()
 
     def rimuovi_valore(self):
-        self.coda.rimuovi()
+        x = self.coda.rimuovi()
         self.aggiorna_coda()
+        self.label_rimosso.config(text=x)
 
     def controlla_vuota(self):
         vuota = self.coda.coda_vuota()
         self.label_vuota.config(text="Sì" if vuota else "No")
 
 
-if __name__ == "__main__":
-    root = tk.Tk()
-    root.title("GUI Coda")
-    coda_gui = CodaGUI(root)
-    coda_gui.pack(fill="both", expand=True)
-    root.mainloop()

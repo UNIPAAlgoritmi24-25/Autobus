@@ -129,7 +129,8 @@ bubble = [
     {"tipo": 0,
      "testo": "Il programma crea un dataset contenenti dei numeri ordinati in maniera casuale Questi numeri vengono forniti all Algortmo che li ordinera."},
     {"tipo": 0, "testo": "Alla fine del'esequzione vedrai i risultati in una tabella sulla destra."},
-
+    {"tipo": 1, "testo": "NOTA"},
+    {"tipo": 0, "testo": "Il Bubble Sort è particolarmente lento le taglie di deflaut per questo test sono 10, 50, 100, 1000. \n\nSe ritieni che la tua machina possa reggerlo gli altri algortmi vengono testeti secondo queste taglie 10, 100, 1000, 5000, 10000 \n\n(Il confronto è sempre fatto con taglie semre uguali)"}
 ]
 insertion = [
     {"tipo": 1, "testo": "Insertion Sort"},
