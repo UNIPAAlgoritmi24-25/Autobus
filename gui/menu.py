@@ -52,7 +52,7 @@ scelte = [
             {
                 "nome": "Liste",
                 "btn_text": "Vai",
-                "btn_action": 8
+                "btn_action": 10
             }
         ]
     },

@@ -17,11 +17,10 @@ class Nodo:
         return f"Nodo_{self.etichetta}"
 
 class Arco:
-    def __init__(self, partenza, destinazione, peso = 0, senso_unico = False):
+    def __init__(self, partenza, destinazione, peso = 0):
         self.peso = peso
         self.partenza = partenza
         self.destinazione = destinazione
-        self.senso_unico = senso_unico
 
     def __str__(self):
         return f"Arco: Da:{self.partenza}, A:{self.destinazione}, Peso: {self.peso}"
@@ -44,11 +43,8 @@ class Grafo:
             i = self.nodi.index(arco.partenza)
             j = self.nodi.index(arco.destinazione)
 
-            if arco.senso_unico:
-                matrice[i][j] = arco.peso  # Solo da partenza a destinazione
-            else:
-                matrice[i][j] = arco.peso
-                matrice[j][i] = arco.peso  # Anche direzione opposta
+            matrice[i][j] = arco.peso  # Solo da partenza a destinazione
+
 
         return matrice
 
@@ -83,9 +79,6 @@ class Grafo:
                 if arco.partenza == nodo_corrente:
                     # Aggiungi sempre la destinazione
                     adiacenza[i].aggiungi_in_coda(arco.destinazione.etichetta)
-                elif not arco.senso_unico and arco.destinazione == nodo_corrente:
-                    # Se l’arco NON è orientato, aggiungi anche la partenza
-                    adiacenza[i].aggiungi_in_coda(arco.partenza.etichetta)
 
         return adiacenza
 
@@ -98,18 +91,13 @@ class Grafo:
         for nodo in self.nodi:
             riga = []
             for arco in self.archi:
-                if arco.senso_unico:
-                    if arco.partenza == nodo:
-                        riga.append(1)
-                    elif arco.destinazione == nodo:
-                        riga.append(-1)
-                    else:
-                        riga.append(0)
+                if arco.partenza == nodo:
+                    riga.append(1)
+                elif arco.destinazione == nodo:
+                    riga.append(-1)
                 else:
-                    if nodo == arco.partenza or nodo == arco.destinazione:
-                        riga.append(1)
-                    else:
-                        riga.append(0)
+                    riga.append(0)
+
             matrice.append(riga)
         return matrice
 
@@ -173,10 +161,8 @@ class Grafo:
                 # Considera entrambi i versi se il grafo è non orientato
                 if arco.partenza == u:
                     v = arco.destinazione
-                elif not arco.senso_unico and arco.destinazione == u:
-                    v = arco.partenza
-                else:
-                    continue
+                else: # NON Eliminare questa riga - Controllo iterazione
+                    continue # NON Eliminare questa riga - Controllo iterazione
 
                 if v not in in_mst and arco.peso < chiave[v]:
                     chiave[v] = arco.peso
@@ -186,16 +172,14 @@ class Grafo:
         # Ricostruzione dell'MST come lista di archi
         mst = []
         for nodo in self.nodi:
-            if padre[nodo]:
+            if padre[nodo] is not None:
                 peso = next(
                     arco.peso for arco in self.archi
-                    if (arco.partenza == padre[nodo] and arco.destinazione == nodo) or
-                    (not arco.senso_unico and arco.destinazione == padre[nodo] and arco.partenza == nodo)
+                    if arco.partenza == padre[nodo] and arco.destinazione == nodo
                 )
                 mst.append(Arco(padre[nodo], nodo, peso))
 
         return mst
-
 
     def dijkstra(self, sorgente):
         distanze = {n: float('inf') for n in self.nodi}

@@ -14,12 +14,13 @@ from gui.frames.pila import Pila
 from gui.frames.coda import Coda
 from gui.frames.alberi import Albero
 from gui.frames.grafi import Grafo
+from gui.frames.liste import Lista
 
 
 
 class MainApp(tk.Tk):
     def dispatch(self, action):
-        frame = [Counting, Marge, Bubble, Insertion, Quik, Compara, Pila, Coda, Albero, Grafo]
+        frame = [Counting, Marge, Bubble, Insertion, Quik, Compara, Pila, Coda, Albero, Grafo, Lista]
 
         self.show_frame(frame[action])
 
@@ -33,7 +34,7 @@ class MainApp(tk.Tk):
         self.container.pack(fill="both", expand=True)
 
         self.show_frame(HomeFrame)
-        self.dispatch(-1) # ELIMINARE - redict automatico alla pagina di lavoro - Elimina questa riga prima consegnare
+        # self.dispatch(-1) # ELIMINARE - redict automatico alla pagina di lavoro - Elimina questa riga prima consegnare
 
     def create_menu(self):
         menu_bar = tk.Menu(self)
@@ -62,6 +63,7 @@ class MainApp(tk.Tk):
         linear_menu = tk.Menu(menu_bar, tearoff=0)
         linear_menu.add_command(label="Pila", command=lambda: self.dispatch(6))
         linear_menu.add_command(label="Coda", command=lambda: self.dispatch(7))
+        linear_menu.add_command(label="Liste", command=lambda: self.dispatch(10))
         menu_bar.add_cascade(label="Lineari", menu=linear_menu)
 
         # Menu "Strutture Dati non Lineari"

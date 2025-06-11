@@ -12,7 +12,8 @@ class NodoDoppio(Nodo):
 
 
 class Lista:
-    def __init__(self, circolare=True, doppia=False):
+    def __init__(self, circolare=False, doppia=False):
+        self.pun=None # Per la gui
         self.circolare = circolare
         self.doppia = doppia
         if doppia:
@@ -46,7 +47,8 @@ class Lista:
 
             if self.doppia:
                 nuovo_nodo.precedente = self.indice
-                nuovo_nodo.successore.precedente = nuovo_nodo
+                if nuovo_nodo.successore is not None:
+                    nuovo_nodo.successore.precedente = nuovo_nodo
 
     def aggiungi_in_coda(self, valore):
         if self.doppia:
@@ -79,6 +81,20 @@ class Lista:
             print(f"{corrente.valore}", end=" --> ")
             corrente = corrente.successore
         print("Ø")
+
+    def _get_el_scansiona(self):
+        out = []
+        corrente = self.indice.successore
+        while corrente and corrente != self.indice:
+            out.append(corrente.valore)
+            corrente = corrente.successore
+        return out
+
+    def get_max(self):
+        return max(self._get_el_scansiona())
+
+    def get_min(self):
+        return min(self._get_el_scansiona())
 
     def stampa(self):
         output = []
