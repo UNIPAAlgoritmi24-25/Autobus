@@ -163,14 +163,14 @@ class Lista(ttk.Frame):
 
 
     def avanza(self, label, lista):
-        if lista.pun.successore:
+        if lista.pun and lista.pun.successore:
             lista.pun = lista.pun.successore
             label.config(text=lista.pun.valore)
         else:
             label.config(text="NO SUCCESSORE")
 
     def indietreggia(self, label,lista):
-        if lista.pun.precedente:
+        if lista.pun and lista.pun.precedente:
             lista.pun = lista.pun.precedente
             label.config(text=lista.pun.valore)
         else:
