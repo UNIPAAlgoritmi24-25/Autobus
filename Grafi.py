@@ -142,44 +142,32 @@ class Grafo:
         return output
 
     def prim(self, sorgente):
-        chiave = {n: float('inf') for n in self.nodi}
-        padre = {n: None for n in self.nodi}
-        chiave[sorgente] = 0
-        contatore = itertools.count()
-        heap = [(0, next(contatore), sorgente)]
-        in_mst = set()
+        visitati = set()
+        mst_archi = []
+        heap = []
 
-        while heap:
-            _, _, u = heapq.heappop(heap)
+        visitati.add(sorgente)
 
-            if u in in_mst:
-                continue  # Salta se è già nel MST
+        # Aggiungi tutti gli archi in uscita dal nodo sorgente
+        for arco in self.archi:
+            if arco.partenza == sorgente:
+                heapq.heappush(heap, (arco.peso, arco))
 
-            in_mst.add(u)
+        while heap and len(visitati) < len(self.nodi):
+            peso, arco = heapq.heappop(heap)
 
-            for arco in self.archi:
-                # Considera entrambi i versi se il grafo è non orientato
-                if arco.partenza == u:
-                    v = arco.destinazione
-                else: # NON Eliminare questa riga - Controllo iterazione
-                    continue # NON Eliminare questa riga - Controllo iterazione
+            if arco.destinazione in visitati:
+                continue
 
-                if v not in in_mst and arco.peso < chiave[v]:
-                    chiave[v] = arco.peso
-                    padre[v] = u
-                    heapq.heappush(heap, (chiave[v], next(contatore), v))
+            mst_archi.append(arco)
+            visitati.add(arco.destinazione)
 
-        # Ricostruzione dell'MST come lista di archi
-        mst = []
-        for nodo in self.nodi:
-            if padre[nodo] is not None:
-                peso = next(
-                    arco.peso for arco in self.archi
-                    if arco.partenza == padre[nodo] and arco.destinazione == nodo
-                )
-                mst.append(Arco(padre[nodo], nodo, peso))
+            # Aggiungi nuovi archi in uscita dal nodo appena aggiunto
+            for prossimo in self.archi:
+                if prossimo.partenza == arco.destinazione and prossimo.destinazione not in visitati:
+                    heapq.heappush(heap, (prossimo.peso, prossimo))
 
-        return mst
+        return mst_archi
 
     def dijkstra(self, sorgente):
         distanze = {n: float('inf') for n in self.nodi}

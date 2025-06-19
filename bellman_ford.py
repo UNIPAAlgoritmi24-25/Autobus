@@ -16,6 +16,6 @@ def bellman_ford(grafo, sorgente):
         u = arco.partenza
         v = arco.destinazione
         if distanza[u] + arco.peso < distanza[v]:
-            raise ValueError("Il grafo contiene un ciclo negativo")
-
+            print("Il grafo contiene un ciclo negativo")
+            return -1
     return distanza

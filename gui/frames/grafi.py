@@ -87,17 +87,31 @@ class Grafo(ttk.Frame):
         i += 1
         label = ttk.Label(self.comandi, text="Algoritmi:")
         self.entry_algortmi = ttk.Entry(self.comandi)
+
         btn_prim = ttk.Button(self.comandi, text="Prim", command=self.prim)
+        btn_kruskal = ttk.Button(self.comandi, text="Kruskal", command=self.prim)
+
         btn_dijkstra = ttk.Button(self.comandi, text="Dijkstra", command=self.dijkstra)
-        btn_visita_bfs = ttk.Button(self.comandi, text="Visiita BFS", command=self.bfs)
         btn_belfor = ttk.Button(self.comandi, text="B. Ford", command=self.belfor)
 
-        self.entry_algortmi.grid(row=i, column=1, padx=10, pady=5)
+        btn_visita_bfs = ttk.Button(self.comandi, text="Visiita BFS", command=self.bfs)
+
         label.grid(row=i, column=0, padx=10, pady=5)
-        btn_prim.grid(row=i, column=4, padx=10, pady=5)
-        btn_dijkstra.grid(row=i, column=2, padx=10, pady=5)
+        ttk.Label(self.comandi, text="Cammini minimi").grid(row=i, column=1, padx=10, pady=5)
+        ttk.Label(self.comandi, text="albero di copertura").grid(row=i, column=2, padx=10, pady=5)
+        ttk.Label(self.comandi, text="Visite").grid(row=i, column=3, padx=10, pady=5)
+        i += 1
+
+        ttk.Label(self.comandi, text="Sorgente").grid(row=i, column=0, padx=10, pady=5)
+        btn_prim.grid(row=i, column=2, padx=10, pady=5)
         btn_visita_bfs.grid(row=i, column=3, padx=10, pady=5)
-        btn_belfor.grid(row=i, column=5, padx=10, pady=5)
+        btn_dijkstra.grid(row=i, column=1, padx=10, pady=5)
+
+
+        i += 1
+        self.entry_algortmi.grid(row=i, column=0, padx=10, pady=5)
+        btn_belfor.grid(row=i, column=1, padx=10, pady=5)
+        btn_kruskal.grid(row=i, column=2, padx=10, pady=5)
 
 
         i += 1
@@ -171,7 +185,8 @@ class Grafo(ttk.Frame):
             self.label_stampa.config(text="Non Esiste")
         else:
             z = bellman_ford.bellman_ford(self.gra, x)
-            print(z)
+            if z == -1:
+                return self.label_stampa.config(text="Il grafo contiene un ciclo negativo")
             y = f"Distanze: \n"
             for (key, value) in z.items():
                 y += f"Nodo: {str(key)} Distanza: {value} \n"
@@ -243,7 +258,7 @@ class Grafo(ttk.Frame):
                     nodi = []
                     archi = []
                     for indice, peso in enumerate(righe[0].split(" ")):
-                        nodi.append(stu.Nodo(str(indice)))
+                        nodi.append(stu.Nodo(str(indice+1)))
 
                     for indice, riga in enumerate(righe):
                         partenza = nodi[indice]
@@ -251,12 +266,20 @@ class Grafo(ttk.Frame):
                             return messagebox.showinfo("Formato errato",f"Valori mancanti")
 
                         for arrivo, cella in enumerate(riga.split(" ")):
-                            if int(cella) > 0:
-                                archi.append(stu.Arco(partenza,nodi[arrivo],cella))
-                    print(self.gra.descrivi())
-                    print(self.gra.densita())
+                            if int(cella) != 0:
+                                archi.append(stu.Arco(partenza,nodi[arrivo],int(cella)))
+
+                    #print("ID vecchio grafo:", id(self.gra))
+                    #print("Densità del vecchio grafo:", self.gra.densita())
+
                     self.gra = stu.Grafo(nodi, archi)
+                    #print("ID nuovo grafo:", id(self.gra))
+                    #print("Densità del nuovo grafo:", self.gra.densita())
+
+
                     messagebox.showinfo("Successo", f"Caricato")
+                    print(self.gra.descrivi())
+                    print(f"Densità:  {self.gra.densita()}")
 
             except Exception as e:
                 messagebox.showerror("Errore", f"Errore durante la lettura: {e}")
